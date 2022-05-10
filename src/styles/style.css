@@ -9,7 +9,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body{
   font-family: 'Epilogue', sans-serif;
+  width: 100%;
 }
 
 a {
@@ -20,15 +24,15 @@ ul{
   list-style: none;
 }
 
-body{
-  height: 100vh;
-  width: 100vw;
+/* NAVIGATION */
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 2rem 1rem 2rem;
 }
-
-
 nav{
   position: absolute;
-  right: 1rem;
 }
 
 nav ul li {
@@ -36,13 +40,9 @@ nav ul li {
 }
 
 nav ul li a {
+  color: var(--Almost-black);
   transition: color 0.2s;
   position: relative;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-  color: var(--base-color);
 }
 
 nav ul li a::after {
@@ -58,16 +58,13 @@ nav ul li a::after {
   transition: width 0.2s;
 }
 
-nav ul li a:hover::after,
-nav ul li a.active::after {
-  width: 100%;
-}
+
 
 nav .menu {
-  opacity: 0;
   visibility: hidden;
   top: -20rem;
   transition: 0.2s;
+  width: 100%;
 }
 
 nav .menu ul {
@@ -76,6 +73,14 @@ nav .menu ul {
 
 /* Mostrar menu */
 
+nav.show{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  background:var(--Medium-gray);
+}
 
 nav.show .menu ul {
   display: grid;
@@ -83,10 +88,24 @@ nav.show .menu ul {
 nav.show .menu {
   opacity: 1;
   visibility: visible;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--Almost-white);
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
 
 }
 nav.show ul.grid {
   gap: 0.5rem;
+}
+
+li, span, a.more {
+  cursor: pointer;
 }
 
 header div .icon-menu.show{
@@ -99,6 +118,7 @@ header div .icon-close.show{
 
 /* toggle menu */
 .toggle {
+  visibility: inherit;
   color: var(--base-color);
   font-size: 1.5rem;
   cursor: pointer;
@@ -164,39 +184,113 @@ div.drop-card.active-features{
 }
 
 div.drop-card.active-company{
-  display: block;
+  display: flex;
 }
 
-/*========= MAIN =========*/
+  /* buttons */
 
+  div#login{
+    display: flex;
+    gap: 1rem;
+  }
+  #buttonLogin{
+    background: transparent;
+    border: none;
+    color: var(--Medium-gray);
+  }
+
+  #buttonLogin:hover{
+    color: var(--Almost-black);
+    cursor: pointer;
+  }
+
+  #buttonRegister{
+    background: none;
+    color: var(--Medium-gray);
+    border: 1px solid var(--Medium-gray);
+    border-radius: 0.6rem ;
+    padding: .5rem;
+  }
+
+  #buttonRegister:hover{
+    cursor: pointer;
+    color: var(--Almost-black);
+    border-color: var(--Almost-black);
+  }
+
+/*========= MAIN =========*/
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  margin: 3rem;
+}
 p{
   font: 200 1.125rem;
   color: var(--Medium-gray);
+  width: 80%;
 }
-aside{
-  position: relative;
-  top: 0;
+
+aside {
+  width: 100%;
 }
+
 aside img{
-  position: relative;
-  max-height: 450px;
-  max-width: 400px;
+  width: 100%;
 }
 
 div.container{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
-  margin-bottom: 50px;
+
 }
 
+a.more{
+  text-align: center;
+  max-width: 130px;
+  background: var(--Almost-black);
+  color: white;
+  padding: 1rem;
+  border: 1px solid var(--Almost-black);
+  border-radius: 0.9rem;
+  
+}
+
+a.more:hover{
+  background: white;
+  color: var(--Almost-black);
+}
+
+div.icons{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+div.icons img {
+  width: 4rem;
+}
 
 /*========= MEDIA QUERIES =========*/
-/* extra large devices: 1200 > */
+
 @media (min-width: 768px) {
 
+  body{
+    overflow: hidden;
+    position: initial;
+  }
+
   /*====  NAVIGATION ============================ */
+  #header {
+    display: block;
+    width: 100%;
+  }
+
   nav#mobileMenu{
     position: static;
     width: auto;
@@ -221,11 +315,6 @@ div.container{
     text-align: center;
   }
 
-  nav ul li a {
-    color: var(--Almost-black);
-    transition: color 0.2s;
-    position: relative;
-  }
 
   nav ul li a::after {
     content: '';
@@ -239,26 +328,9 @@ div.container{
     transition: width 0.2s;
   }
 
-  nav ul li a:hover::after,
-  nav ul li a.active::after {
-    width: 100%;
-  }
-
-  nav .menu {
-    opacity: 0;
-    visibility: hidden;
-    top: -20rem;
-    transition: 0.2s;
-  }
-
-  nav .menu ul {
-    display: none;
-  }
-
 
   div.drop-card ul.drop-list{
-    z-index: 5;
-    margin: 5px 0 5px 10px;;
+    margin: 5px 5px 5px 40px;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -302,90 +374,38 @@ div.container{
   /* PRINCIPAL */
 
   main{
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    align-items: initial;
     gap: 2rem;
     flex: 1;
-    margin-top: 3rem;
-    margin-left: 4rem;
-    
   }
+
   h1{
-    font-size: 4.5rem;
+    margin: 0 3rem 0 0;
+    font-size: 4rem;
     font-weight: 700;
   }
 
-  p{
-    max-width: 80%;
-    font-size: 1.125rem;
-  }
   main h1 span{
     display: block;
   }
 
   /* aside */
   aside {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    
+    flex: 1;    
+    position: relative;
+    top: -2rem;
   }
 
-  /* buttons */
-
-  div#login{
-    display: flex;
-    gap: 1rem;
-  }
-  #buttonLogin{
-    background: transparent;
-    border: none;
-    color: var(--Medium-gray);
+  aside img{
+    position: relative;
+    max-width: 100%;
+    max-height: 480px;
+    min-height: 200px;  
   }
 
-  #buttonLogin:hover{
-    color: var(--Almost-black);
-    cursor: pointer;
-  }
 
-  #buttonRegister{
-    background: none;
-    color: var(--Medium-gray);
-    border: 1px solid var(--Medium-gray);
-    border-radius: 0.6rem ;
-    padding: .5rem;
-  }
 
-  #buttonRegister:hover{
-    cursor: pointer;
-    color: var(--Almost-black);
-    border-color: var(--Almost-black);
-  }
-
-  a.more{
-    text-align: center;
-    max-width: 130px;
-    background: var(--Almost-black);
-    color: white;
-    padding: 1rem;
-    border: 1px solid var(--Almost-black);
-    border-radius: 0.9rem;
-    
-  }
-
-  a.more:hover{
-    background: white;
-    color: var(--Almost-black);
-  }
-
-  div.icons{
-    display: flex;
-    gap: 1.5rem;
-  }
-
-  body{
-    overflow: hidden;
-  }
   div.container{
     margin: 5rem;
   }
@@ -414,8 +434,7 @@ div.container{
   }
 
   nav .menu ul li a.title.active {
-    font-weight: bold;
-    -webkit-font-smoothing: auto;
+    color: var(--Almost-black);
   }
 
   nav ul li a.title:hover, #arrowCompany, #arrowFeatures{
@@ -431,6 +450,10 @@ div.container{
     align-items: center;
     justify-content: space-between;
     margin-top: -5px
+  }
+
+  div.icons img {
+    width: auto;
   }
 
 }

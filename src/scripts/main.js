@@ -34,3 +34,23 @@ dropFeatures.addEventListener('click', function () {
   cardFeatures.classList.toggle('active-features')
   arrowFeatures.classList.toggle('arrow-features')
 })
+
+/* insere a imagem do aside dependendo do tamnho da tela */
+
+const asideImage = document.querySelector('#asideImage')
+
+function checkScreenSize() {
+  let width = window.innerWidth
+
+  if (width < 768) {
+    asideImage.src = './src/assets/images/image-hero-mobile.png'
+  } else {
+    asideImage.src = './src/assets/images/image-hero-desktop.png'
+  }
+}
+
+window.addEventListener('resize', function () {
+  checkScreenSize()
+})
+
+checkScreenSize()
