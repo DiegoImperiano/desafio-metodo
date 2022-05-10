@@ -1,10 +1,15 @@
 :root {
   --Almost-white: hsl(0, 0%, 98%);
   --Medium-gray: hsl(0, 0%, 41%);
+  --Medium-gray-overlay: rgba(105, 105, 105, 0.8);
   --Almost-black: hsl(0, 0%, 8%);
 }
 
 /*====  RESET ============================ */
+html{
+  background: #fff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +17,7 @@
 }
 
 body{
+  overflow-x: hidden;
   font-family: 'Epilogue', sans-serif;
   width: 100%;
 }
@@ -29,41 +35,23 @@ ul{
 #header {
   display: flex;
   justify-content: space-between;
-  margin: 1rem 2rem 1rem 2rem;
+  margin: 1rem 2rem 1rem 0.5rem;
 }
 nav{
   position: absolute;
 }
 
-nav ul li {
-  text-align: center;
-}
 
 nav ul li a {
-  color: var(--Almost-black);
-  transition: color 0.2s;
+  color: var(--Medium-gray);
   position: relative;
 }
 
-nav ul li a::after {
-  content: '';
-  width: 0%;
-  height: 2px;
-  background: var(--base-color);
-
-  position: absolute;
-  left: 0;
-  bottom: -1.5rem;
-
-  transition: width 0.2s;
-}
-
-
 
 nav .menu {
+  transition: background-color 0.2s;
   visibility: hidden;
   top: -20rem;
-  transition: 0.2s;
   width: 100%;
 }
 
@@ -74,19 +62,22 @@ nav .menu ul {
 /* Mostrar menu */
 
 nav.show{
+  transition: background-color 0.2s;
   position: fixed;
   top: 0;
   right: 0;
+  left: 0;
   height: 100vh;
   width: 100vw;
-  background:var(--Medium-gray);
+  background:var(--Medium-gray-overlay);
+
 }
 
 nav.show .menu ul {
   display: grid;
 }
-nav.show .menu {
-  opacity: 1;
+nav.show div#menu {
+  
   visibility: visible;
   position: absolute;
   top: 0;
@@ -98,11 +89,25 @@ nav.show .menu {
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  
+}
 
-}
 nav.show ul.grid {
-  gap: 0.5rem;
+  gap: 1rem;
+  margin: 5rem 1rem;
 }
+
+
+div.drop-card ul.drop-list{
+  
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  gap: 0.5rem;
+  
+}
+
 
 li, span, a.more {
   cursor: pointer;
@@ -117,9 +122,16 @@ header div .icon-close.show{
 
 
 /* toggle menu */
+
+div.mobile-toggle{
+  z-index: 2;
+  position: relative;
+  right: -1rem;
+}
 .toggle {
+  
   visibility: inherit;
-  color: var(--base-color);
+  color: var(--Medium-gray);
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -131,8 +143,6 @@ nav .icon-close {
   position: absolute;
   top: -1.5rem;
   right: 1.5rem;
-
-  transition: 0.2s;
 }
 
 nav.show div.icon-close {
@@ -141,7 +151,6 @@ nav.show div.icon-close {
   opacity: 1;
   top: 1.5rem;
   right: 2rem;
-  transition: 0.2s;
 }
 
 nav div.toggle.icon-menu{
@@ -150,7 +159,6 @@ nav div.toggle.icon-menu{
   opacity: 1;
   top: 1.5rem;
   right: 2rem;
-  transition: 0.2s;
 }
 
 
@@ -191,7 +199,11 @@ div.drop-card.active-company{
 
   div#login{
     display: flex;
+    flex-direction: column;
     gap: 1rem;
+    /* margin: 1rem; */
+    align-items: center;
+    width: 100%;
   }
   #buttonLogin{
     background: transparent;
@@ -210,6 +222,7 @@ div.drop-card.active-company{
     border: 1px solid var(--Medium-gray);
     border-radius: 0.6rem ;
     padding: .5rem;
+    width: 80%;
   }
 
   #buttonRegister:hover{
@@ -224,13 +237,16 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
-  margin: 3rem;
+  gap: 1.8rem;
+  margin: 2rem 0 2rem 0;
 }
 p{
-  font: 200 1.125rem;
+  
+  font-size: 1.125rem;
+  font-weight: 400;
   color: var(--Medium-gray);
   width: 80%;
+  text-align: center;
 }
 
 aside {
@@ -239,6 +255,7 @@ aside {
 
 aside img{
   width: 100%;
+  object-fit: contain;
 }
 
 div.container{
@@ -269,7 +286,6 @@ div.icons{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: 2rem;
 }
 
 div.icons img {
@@ -278,10 +294,10 @@ div.icons img {
 
 /*========= MEDIA QUERIES =========*/
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 
   body{
-    overflow: hidden;
+    overflow-x: hidden;
     position: initial;
   }
 
@@ -296,12 +312,19 @@ div.icons img {
     width: auto;
   }
 
-  .mobile-toggle{
-    display: none;
-  }
   a.logo-image{
     position: absolute;
     margin: 1rem 2rem 1rem 2rem;
+  }
+  div.toggle.icon-menu{
+    display: none;
+  }
+
+  header div .icon-menu.show, header div .icon-close{
+    display: none;
+  }
+  header div .icon-close.show, header div .icon-close{
+    display: none;
   }
 
   nav {
@@ -311,26 +334,9 @@ div.icons img {
     margin: 1rem 2rem 1rem 10rem;
   }
 
-  nav ul li {
-    text-align: center;
-  }
-
-
-  nav ul li a::after {
-    content: '';
-    width: 0%;
-    height: 2px;
-
-    position: absolute;
-    left: 0;
-    bottom: -1.5rem;
-
-    transition: width 0.2s;
-  }
-
 
   div.drop-card ul.drop-list{
-    margin: 5px 5px 5px 40px;
+    margin: 5px 5px 5px 10px;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -386,6 +392,11 @@ div.icons img {
     font-weight: 700;
   }
 
+  p{
+    width: 60%;
+    text-align: justify;
+  }
+
   main h1 span{
     display: block;
   }
@@ -407,7 +418,7 @@ div.icons img {
 
 
   div.container{
-    margin: 5rem;
+    margin: 5rem 0 0 8rem;
   }
   /* navigation */
   nav.container{
@@ -425,6 +436,10 @@ div.icons img {
   nav .menu ul {
     display: flex;
     gap: 2rem;
+  }
+
+  nav ul li {
+    text-align: center;
   }
 
   nav .menu ul li a.title {
@@ -445,11 +460,31 @@ div.icons img {
     display: none;
   }
 
+    /* buttons */
+
+    div#login{
+      display: flex;
+      flex-direction: row;
+      align-items: initial;
+      gap: 1rem;
+      width: initial;
+    }
+
+    #buttonRegister{
+      
+      width: initial;
+    }
+
   div.menu{
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: -5px
+  }
+
+  div.icons{
+    justify-content: initial;
+    gap: 1.5rem;
   }
 
   div.icons img {

@@ -1,6 +1,6 @@
 /*  abre e fecha o menu quando clicar no icone: hamburguer e x */
 
-const iconeMenu = document.querySelector('#header div .icon-menu')
+const iconMenu = document.querySelector('#header div .icon-menu')
 const iconClose = document.querySelector('#header div .icon-close')
 const nav = document.querySelector('#header nav')
 const toggle = document.querySelectorAll('#header .toggle')
@@ -9,7 +9,7 @@ for (const element of toggle) {
   element.addEventListener('click', function () {
     nav.classList.toggle('show')
     iconClose.classList.toggle('show')
-    iconeMenu.classList.toggle('show')
+    iconMenu.classList.toggle('show')
   })
 }
 
@@ -40,17 +40,18 @@ dropFeatures.addEventListener('click', function () {
 const asideImage = document.querySelector('#asideImage')
 
 function checkScreenSize() {
-  let width = window.innerWidth
+  let width = window.screen.width
 
-  if (width < 768) {
+  if (width < 769) {
     asideImage.src = './src/assets/images/image-hero-mobile.png'
   } else {
     asideImage.src = './src/assets/images/image-hero-desktop.png'
+    nav.classList.remove('show')
+    iconClose.classList.add('show')
+    iconMenu.classList.remove('show')
   }
 }
 
 window.addEventListener('resize', function () {
   checkScreenSize()
 })
-
-checkScreenSize()
