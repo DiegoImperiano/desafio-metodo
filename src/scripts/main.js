@@ -40,7 +40,7 @@ dropFeatures.addEventListener('click', function () {
 const asideImage = document.querySelector('#asideImage')
 
 function checkScreenSize() {
-  let width = window.screen.width
+  let width = window.innerWidth
 
   if (width < 769) {
     asideImage.src = './src/assets/images/image-hero-mobile.png'
@@ -55,3 +55,5 @@ function checkScreenSize() {
 window.addEventListener('resize', function () {
   checkScreenSize()
 })
+
+checkScreenSize()

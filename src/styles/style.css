@@ -5,6 +5,20 @@
   --Almost-black: hsl(0, 0%, 8%);
 }
 
+@media(max-width: 1080px){
+  /* em telas grandes a fonte terá um tamanho de 15px e fara com que as meididas rem diminuam em relação a telas extragrandes */
+  html{
+    font-size: 93.75%;
+  }
+}
+
+@media(max-width: 720px){
+  /* em telas menores que tabletes a fonte terá um tamanho de 14px e fara com que as meididas rem diminuam em relação a telas grandes */
+  html{
+    font-size: 87.5%;
+  }
+}
+
 /*====  RESET ============================ */
 html{
   background: #fff;
@@ -17,7 +31,6 @@ html{
 }
 
 body{
-  overflow-x: hidden;
   font-family: 'Epilogue', sans-serif;
   width: 100%;
 }
@@ -94,7 +107,8 @@ nav.show div#menu {
 
 nav.show ul.grid {
   gap: 1rem;
-  margin: 5rem 1rem;
+  margin: 5rem 1rem 3rem 1rem;
+  object-fit: contain;
 }
 
 
@@ -128,6 +142,8 @@ div.mobile-toggle{
   position: relative;
   right: -1rem;
 }
+
+
 .toggle {
   
   visibility: inherit;
