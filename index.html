@@ -10,24 +10,33 @@
       sizes="32x32"
       href="./src/assets/images/favicon-32x32.png"
     />
-    <link rel="stylesheet" href="./src/styles/style.css" />
+
+    <!-- import da font epilogue -->
     <link
       href="https://fonts.googleapis.com/css2?family=Epilogue:wght@200;500;700&display=swap"
       rel="stylesheet"
     />
+    <!-- import dos estilos ( CSS ) -->
+    <link rel="stylesheet" href="./src/styles/style.css" />
+
     <title>Frontend Mentor | Intro section with dropdown navigation</title>
   </head>
+
   <body>
+    <!-- cabeçalho de navegação -->
     <header id="header">
       <a href="#" class="logo-image">
         <img src="./src/assets/images/logo.svg" alt="snap" />
       </a>
       <div class="mobile-toggle">
-        <div class="toggle icon-menu">
-          <img src="./src/assets/images/icon-menu.svg" alt="" />
+        <div class="toggle icon-menu" aria-label="abrir menu">
+          <img src="./src/assets/images/icon-menu.svg" alt="menu" />
         </div>
-        <div class="toggle icon-close show">
-          <img src="./src/assets/images/icon-close-menu.svg" alt="" />
+        <div class="toggle icon-close show" aria-label="fechar menu">
+          <img
+            src="./src/assets/images/icon-close-menu.svg"
+            alt="fechar menu"
+          />
         </div>
       </div>
       <nav id="mobileMenu" class="container">
@@ -35,41 +44,53 @@
         <div id="menu" class="menu">
           <ul class="grid">
             <li>
-              <a id="features" class="title" href="#" onclick="dropFeatures">
+              <a id="features" class="title" href="#">
                 Features
                 <img
                   id="arrowFeatures"
                   src="./src/assets/images/icon-arrow-down.svg"
-                  alt=""
+                  alt="icone de seta que indica se o menu está aberto ou fechado"
               /></a>
               <div id="cardFeatures" class="drop-card">
                 <ul class="drop-list drop-features">
                   <li>
-                    <img src="./src/assets/images/icon-todo.svg" alt="" />
+                    <img
+                      src="./src/assets/images/icon-todo.svg"
+                      alt="icone todo list"
+                    />
                     <span>Todo List</span>
                   </li>
                   <li>
-                    <img src="./src/assets/images/icon-calendar.svg" alt="" />
+                    <img
+                      src="./src/assets/images/icon-calendar.svg"
+                      alt="icone de calendario"
+                    />
                     <span>Calendar</span>
                   </li>
                   <li>
-                    <img src="./src/assets/images/icon-reminders.svg" alt="" />
+                    <img
+                      src="./src/assets/images/icon-reminders.svg"
+                      alt="icone de lembrete"
+                    />
                     <span>Reminders</span>
                   </li>
                   <li>
-                    <img src="./src/assets/images/icon-planning.svg" alt="" />
+                    <img
+                      src="./src/assets/images/icon-planning.svg"
+                      alt=" icone de planejamento"
+                    />
                     <span>Planning</span>
                   </li>
                 </ul>
               </div>
             </li>
             <li>
-              <a id="company" class="title" href="#" onclick="dropCompany">
+              <a id="company" class="title" href="#">
                 Company
                 <img
                   id="arrowCompany"
                   src="./src/assets/images/icon-arrow-down.svg"
-                  alt=""
+                  alt="icone de seta que indica se o menu está aberto ou fechado"
                 />
               </a>
               <div id="cardCompany" class="drop-card">
@@ -88,11 +109,12 @@
             <button type="button" id="buttonRegister">Register</button>
           </div>
         </div>
-
         <!-- /menu -->
       </nav>
     </header>
+    <!-- /cabeçalho de navegação -->
 
+    <!-- conteudo principal -->
     <div class="container">
       <aside>
         <div>
@@ -114,7 +136,7 @@
 
         <a class="more"><strong>Learn more</strong></a>
 
-        <div class="icons">
+        <div class="brandIcons">
           <img
             src="./src/assets/images/client-audiophile.svg"
             alt="Audiophile"
@@ -131,13 +153,9 @@
         </div>
       </main>
     </div>
+    <!-- /conteudo principal -->
 
-    <!-- <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
-    </div> -->
+    <!-- import do arq js -->
     <script src="./src/scripts/main.js"></script>
   </body>
 </html>
